@@ -1,0 +1,66 @@
+﻿<Window x:Class="TextEdit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextEdit"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="500">
+    <StackPanel>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="New Project" ></MenuItem>
+                <MenuItem Header="Open Project"></MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" Click="MenuItem_Click" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Изменить" >
+                <Button Content="Копировать" CommandTarget="{Binding ElementName=Editor}" Command="Copy"/>
+                <Button Content="Вставить" CommandTarget="{Binding ElementName=Editor}" Command="Paste"/>
+            </MenuItem>
+            <MenuItem Header="Вид" ></MenuItem>
+        </Menu>
+        <ToolBar >
+            <Button Name="Open" Width="20" Height="20" Click="Open_Click">
+                <Image Source="Resources\Explorer.png" Width="16" Height="16"  />
+            </Button>
+            <Button Name="Save" Width="16" Height="16" Click="Save_Click">
+                <Image Source="Resources\Disket.png" Width="16" Height="16"  ></Image>
+            </Button>
+            <ToggleButton Name="italic" ToolTip="Курсив"  Width="16" Height="16" Command="EditingCommands.ToggleItalic">
+                <Image Source="Resources\italic.png" Width="16" Height="16" ></Image>
+                </ToggleButton>
+            <ToggleButton Name="Bold" ToolTip="Полужирный" Width="16" Height="16" Command="EditingCommands.ToggleBold">
+                <Image Source="Resources\Bold.png" Width="16" Height="16"  ></Image>
+            </ToggleButton>
+            <ToggleButton Name="UnderLine" ToolTip="Подчеркивание" Width="16" Height="16" Command="EditingCommands.ToggleUnderline">
+                <Image Source="Resources\underline.png" Width="16" Height="16"  ></Image>
+            </ToggleButton>
+            <ComboBox Name ="Font" Width="150" SelectionChanged="Font_SelectionChanged"></ComboBox>
+            <ComboBox Name ="FontSize" Width="50" IsEditable="True" SelectionChanged="FontSize_SelectionChanged"></ComboBox>
+            <WrapPanel
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Height="32" Width="100">
+                <Button Name="Red" Background="Red" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="Black" Background="Black" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="Gray" Background="Gray" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="White" Background="White" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="Orange" Background="Orange" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="Blue" Background="Blue" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="Pink" Background="Pink" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="Green" Background="Green" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="Purple" Background="Purple" Width="13" Height="13" Click="Red_Click"/>
+                <Button Name="BlueViolet" Background="BlueViolet" Width="13" Height="13" Click="Red_Click"/>
+            </WrapPanel>
+            <ComboBox Name ="Range" Width="150" SelectionChanged="Range_SelectionChanged"></ComboBox>
+        </ToolBar>
+        <RichTextBox Name="Editor" SelectionChanged="Editor_SelectionChanged">
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="0" />
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+        
+    </StackPanel>
+</Window>
